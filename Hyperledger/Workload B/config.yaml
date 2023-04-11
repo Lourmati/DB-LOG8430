@@ -1,0 +1,23 @@
+# Workload B (10/90 for read/write)
+# init (write transaction) & query (read transaction)
+test:
+  workers:
+    type: local
+    number: 5
+  rounds:
+    - label: init
+      txNumber: 900
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 25
+      workload:
+        module: benchmarks/samples/fabric/marbles/init.js
+    - label: query
+      txDuration: 15
+      rateControl:
+        type: fixed-rate
+        opts:
+          tps: 6.25
+      workload:
+        module: benchmarks/samples/fabric/marbles/query.js

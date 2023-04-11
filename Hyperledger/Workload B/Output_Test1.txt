@@ -1,0 +1,339 @@
+2023.04.08-21:02:46.565 info  [caliper] [cli-launch-manager]    Set workspace path: /home/ubuntu/caliper-benchmarks
+2023.04.08-21:02:46.567 info  [caliper] [cli-launch-manager]    Set benchmark configuration path: /home/ubuntu/caliper-benchmarks/benchmarks/samples/fabric/marbles/config.yaml
+2023.04.08-21:02:46.567 info  [caliper] [cli-launch-manager]    Set network configuration path: /home/ubuntu/caliper-benchmarks/networks/fabric/v1/v1.4.4/2org1peercouchdb_raft/fabric-go-tls-solo.yaml
+2023.04.08-21:02:46.568 info  [caliper] [cli-launch-manager]    Set SUT type: fabric
+2023.04.08-21:02:46.620 info  [caliper] [benchmark-validator]   No observer specified, will default to `none`
+2023.04.08-21:02:46.621 info  [caliper] [caliper-engine]        Starting benchmark flow
+2023.04.08-21:02:47.112 info  [caliper] [fabric-connector]      Initializing standard connector compatible with installed SDK: 1.4.20
+2023.04.08-21:02:47.489 info  [caliper] [caliper-utils]         Executing command: cd .; export FABRIC_VERSION=1.4.4;export FABRIC_CA_VERSION=1.4.4;docker-compose -f networks/fabric/docker-compose/2org1peercouchdb_solo_raft/docker-compose-tls.yaml up -d;sleep 10s
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+Creating network "2org1peercouchdb_solo_raft_default" with the default driver
+Creating couchdb.peer0.org1.example.com ...
+Creating ca.org2.example.com            ...
+Creating ca.org1.example.com            ...
+Creating couchdb.peer0.org2.example.com ...
+Creating couchdb.peer0.org1.example.com ... done
+Creating ca.org2.example.com            ... done
+Creating couchdb.peer0.org2.example.com ... done
+Creating ca.org1.example.com            ... done
+Creating orderer0.example.com           ...
+Creating orderer0.example.com           ... done
+Creating peer0.org2.example.com         ...
+Creating peer0.org1.example.com         ...
+Creating peer0.org2.example.com         ... done
+Creating peer0.org1.example.com         ... done
+2023.04.08-21:03:03.442 info  [caliper] [caliper-engine]        Executed start command in 15.953 seconds
+2023.04.08-21:03:03.442 info  [caliper] [connectors/v1/fabric]  Fabric SDK version: 1.4.20; TLS: server
+2023.04.08-21:03:04.270 info  [caliper] [connectors/v1/fabric]  Org1's registrar enrolled successfully
+2023.04.08-21:03:04.513 info  [caliper] [connectors/v1/fabric]  Org2's registrar enrolled successfully
+2023.04.08-21:03:04.526 info  [caliper] [connectors/v1/fabric]  Org1's admin's materials are successfully loaded
+2023.04.08-21:03:04.547 info  [caliper] [connectors/v1/fabric]  Org2's admin's materials are successfully loaded
+2023.04.08-21:03:04.554 info  [caliper] [connectors/v1/fabric]  client0.org1.example.com's materials are successfully loaded
+2023.04.08-21:03:04.565 info  [caliper] [connectors/v1/fabric]  client0.org2.example.com's materials are successfully loaded
+2023.04.08-21:03:04.566 info  [caliper] [connectors/v1/fabric]  Channel 'mychannel' definiton being retrieved from file
+2023.04.08-21:03:04.630 info  [caliper] [connectors/v1/fabric]  Channel 'mychannel' successfully created
+2023.04.08-21:03:04.630 info  [caliper] [connectors/v1/fabric]  Sleeping 5s...
+2023.04.08-21:03:09.826 info  [caliper] [connectors/v1/fabric]  Org1's peers successfully joined mychannel: peer0.org1.example.com
+2023.04.08-21:03:09.987 info  [caliper] [connectors/v1/fabric]  Org2's peers successfully joined mychannel: peer0.org2.example.com
+2023.04.08-21:03:09.987 info  [caliper] [connectors/v1/fabric]  Sleeping 5s...
+2023.04.08-21:03:14.988 info  [caliper] [caliper-engine]        Executed "init" step in 11.546 seconds
+2023.04.08-21:03:14.989 info  [caliper] [connectors/v1/fabric]  Installing contracts for mychannel...
+2023.04.08-21:03:15.104 info  [caliper] [connectors/v1/fabric]  marbles@v0 successfully installed on Org1's peers: peer0.org1.example.com
+2023.04.08-21:03:15.169 info  [caliper] [connectors/v1/fabric]  marbles@v0 successfully installed on Org2's peers: peer0.org2.example.com
+2023.04.08-21:03:15.203 info  [caliper] [connectors/v1/fabric]  drm@v0 successfully installed on Org1's peers: peer0.org1.example.com
+2023.04.08-21:03:15.217 info  [caliper] [connectors/v1/fabric]  drm@v0 successfully installed on Org2's peers: peer0.org2.example.com
+2023.04.08-21:03:15.257 info  [caliper] [connectors/v1/fabric]  simple@v0 successfully installed on Org1's peers: peer0.org1.example.com
+2023.04.08-21:03:15.270 info  [caliper] [connectors/v1/fabric]  simple@v0 successfully installed on Org2's peers: peer0.org2.example.com
+2023.04.08-21:03:15.301 info  [caliper] [connectors/v1/fabric]  smallbank@v0 successfully installed on Org1's peers: peer0.org1.example.com
+2023.04.08-21:03:15.314 info  [caliper] [connectors/v1/fabric]  smallbank@v0 successfully installed on Org2's peers: peer0.org2.example.com
+2023.04.08-21:03:15.315 info  [caliper] [connectors/v1/fabric]  Instantiating marbles@v0 in mychannel. This might take some time...
+2023.04.08-21:03:50.629 info  [caliper] [connectors/v1/fabric]  Successfully instantiated marbles@v0 in mychannel
+2023.04.08-21:03:50.630 info  [caliper] [connectors/v1/fabric]  Instantiating drm@v0 in mychannel. This might take some time...
+2023.04.08-21:04:25.752 info  [caliper] [connectors/v1/fabric]  Successfully instantiated drm@v0 in mychannel
+2023.04.08-21:04:25.753 info  [caliper] [connectors/v1/fabric]  Instantiating simple@v0 in mychannel. This might take some time...
+2023.04.08-21:05:02.185 info  [caliper] [connectors/v1/fabric]  Successfully instantiated simple@v0 in mychannel
+2023.04.08-21:05:02.186 info  [caliper] [connectors/v1/fabric]  Instantiating smallbank@v0 in mychannel. This might take some time...
+2023.04.08-21:05:37.602 info  [caliper] [connectors/v1/fabric]  Successfully instantiated smallbank@v0 in mychannel
+2023.04.08-21:05:37.604 info  [caliper] [connectors/v1/fabric]  Sleeping 5s...
+2023.04.08-21:05:42.605 info  [caliper] [caliper-engine]        Executed "install" step in 147.616 seconds
+2023.04.08-21:05:42.610 info  [caliper] [monitor.js]    No resource monitors specified
+2023.04.08-21:05:42.612 info  [caliper] [default-observer]      Observer interval set to 5000 seconds
+2023.04.08-21:05:42.615 info  [caliper] [round-orchestrator]    Preparing worker connections
+2023.04.08-21:05:42.615 info  [caliper] [worker-orchestrator]   Launching worker 1 of 5
+2023.04.08-21:05:42.626 info  [caliper] [worker-orchestrator]   Launching worker 2 of 5
+2023.04.08-21:05:42.633 info  [caliper] [worker-orchestrator]   Launching worker 3 of 5
+2023.04.08-21:05:42.649 info  [caliper] [worker-orchestrator]   Launching worker 4 of 5
+2023.04.08-21:05:42.662 info  [caliper] [worker-orchestrator]   Launching worker 5 of 5
+2023.04.08-21:05:42.680 info  [caliper] [worker-orchestrator]   Messenger not configured, entering configure phase...
+2023.04.08-21:05:42.681 info  [caliper] [worker-orchestrator]   No existing workers detected, entering worker launch phase...
+2023.04.08-21:05:42.682 info  [caliper] [worker-orchestrator]   Waiting for 5 workers to be connected...
+2023.04.08-21:05:44.360 info  [caliper] [cli-launch-worker]     Set workspace path: /home/ubuntu/caliper-benchmarks
+2023.04.08-21:05:44.381 info  [caliper] [cli-launch-worker]     Set benchmark configuration path: /home/ubuntu/caliper-benchmarks/benchmarks/samples/fabric/marbles/config.yaml
+2023.04.08-21:05:44.384 info  [caliper] [cli-launch-worker]     Set network configuration path: /home/ubuntu/caliper-benchmarks/networks/fabric/v1/v1.4.4/2org1peercouchdb_raft/fabric-go-tls-solo.yaml
+2023.04.08-21:05:44.385 info  [caliper] [cli-launch-worker]     Set SUT type: fabric
+2023.04.08-21:05:44.514 info  [caliper] [cli-launch-worker]     Set workspace path: /home/ubuntu/caliper-benchmarks
+2023.04.08-21:05:44.539 info  [caliper] [cli-launch-worker]     Set benchmark configuration path: /home/ubuntu/caliper-benchmarks/benchmarks/samples/fabric/marbles/config.yaml
+2023.04.08-21:05:44.539 info  [caliper] [cli-launch-worker]     Set network configuration path: /home/ubuntu/caliper-benchmarks/networks/fabric/v1/v1.4.4/2org1peercouchdb_raft/fabric-go-tls-solo.yaml
+2023.04.08-21:05:44.540 info  [caliper] [cli-launch-worker]     Set SUT type: fabric
+2023.04.08-21:05:44.659 info  [caliper] [cli-launch-worker]     Set workspace path: /home/ubuntu/caliper-benchmarks
+2023.04.08-21:05:44.663 info  [caliper] [cli-launch-worker]     Set benchmark configuration path: /home/ubuntu/caliper-benchmarks/benchmarks/samples/fabric/marbles/config.yaml
+2023.04.08-21:05:44.668 info  [caliper] [cli-launch-worker]     Set network configuration path: /home/ubuntu/caliper-benchmarks/networks/fabric/v1/v1.4.4/2org1peercouchdb_raft/fabric-go-tls-solo.yaml
+2023.04.08-21:05:44.669 info  [caliper] [cli-launch-worker]     Set SUT type: fabric
+2023.04.08-21:05:44.699 info  [caliper] [cli-launch-worker]     Set workspace path: /home/ubuntu/caliper-benchmarks
+2023.04.08-21:05:44.710 info  [caliper] [cli-launch-worker]     Set benchmark configuration path: /home/ubuntu/caliper-benchmarks/benchmarks/samples/fabric/marbles/config.yaml
+2023.04.08-21:05:44.714 info  [caliper] [cli-launch-worker]     Set network configuration path: /home/ubuntu/caliper-benchmarks/networks/fabric/v1/v1.4.4/2org1peercouchdb_raft/fabric-go-tls-solo.yaml
+2023.04.08-21:05:44.715 info  [caliper] [cli-launch-worker]     Set SUT type: fabric
+2023.04.08-21:05:44.736 info  [caliper] [cli-launch-worker]     Set workspace path: /home/ubuntu/caliper-benchmarks
+2023.04.08-21:05:44.750 info  [caliper] [cli-launch-worker]     Set benchmark configuration path: /home/ubuntu/caliper-benchmarks/benchmarks/samples/fabric/marbles/config.yaml
+2023.04.08-21:05:44.752 info  [caliper] [cli-launch-worker]     Set network configuration path: /home/ubuntu/caliper-benchmarks/networks/fabric/v1/v1.4.4/2org1peercouchdb_raft/fabric-go-tls-solo.yaml
+2023.04.08-21:05:44.752 info  [caliper] [cli-launch-worker]     Set SUT type: fabric
+2023.04.08-21:05:45.057 info  [caliper] [worker-orchestrator]   5 workers connected, progressing to worker assignment phase.
+2023.04.08-21:05:45.058 info  [caliper] [worker-orchestrator]   Workers currently unassigned, awaiting index assignment...
+2023.04.08-21:05:45.063 info  [caliper] [worker-orchestrator]   Waiting for 5 workers to be assigned...
+2023.04.08-21:05:45.352 info  [caliper] [worker-orchestrator]   5 workers assigned, progressing to worker initialization phase.
+2023.04.08-21:05:45.352 info  [caliper] [worker-orchestrator]   Waiting for 5 workers to be ready...
+2023.04.08-21:05:50.087 info  [caliper] [worker-message-handler]        Initializing Worker#0...
+2023.04.08-21:05:50.087 info  [caliper] [fabric-connector]      Initializing standard connector compatible with installed SDK: 1.4.20
+2023.04.08-21:05:50.090 info  [caliper] [connectors/v1/fabric]  Fabric SDK version: 1.4.20; TLS: server
+2023.04.08-21:05:50.157 info  [caliper] [connectors/v1/fabric]  Org1's admin's materials are successfully loaded
+2023.04.08-21:05:50.175 info  [caliper] [connectors/v1/fabric]  Org2's admin's materials are successfully loaded
+2023.04.08-21:05:50.243 info  [caliper] [worker-message-handler]        Worker#0 initialized
+2023.04.08-21:05:50.294 info  [caliper] [worker-message-handler]        Initializing Worker#3...
+2023.04.08-21:05:50.295 info  [caliper] [fabric-connector]      Initializing standard connector compatible with installed SDK: 1.4.20
+2023.04.08-21:05:50.298 info  [caliper] [connectors/v1/fabric]  Fabric SDK version: 1.4.20; TLS: server
+2023.04.08-21:05:50.298 info  [caliper] [connectors/v1/fabric]  Org1's admin's materials are successfully loaded
+2023.04.08-21:05:50.298 info  [caliper] [connectors/v1/fabric]  Org2's admin's materials are successfully loaded
+2023.04.08-21:05:50.303 info  [caliper] [worker-message-handler]        Worker#3 initialized
+2023.04.08-21:05:50.362 info  [caliper] [worker-message-handler]        Initializing Worker#1...
+2023.04.08-21:05:50.362 info  [caliper] [fabric-connector]      Initializing standard connector compatible with installed SDK: 1.4.20
+2023.04.08-21:05:50.364 info  [caliper] [connectors/v1/fabric]  Fabric SDK version: 1.4.20; TLS: server
+2023.04.08-21:05:50.364 info  [caliper] [connectors/v1/fabric]  Org1's admin's materials are successfully loaded
+2023.04.08-21:05:50.364 info  [caliper] [connectors/v1/fabric]  Org2's admin's materials are successfully loaded
+2023.04.08-21:05:50.364 info  [caliper] [worker-message-handler]        Worker#1 initialized
+2023.04.08-21:05:50.402 info  [caliper] [worker-message-handler]        Initializing Worker#4...
+2023.04.08-21:05:50.402 info  [caliper] [fabric-connector]      Initializing standard connector compatible with installed SDK: 1.4.20
+2023.04.08-21:05:50.404 info  [caliper] [connectors/v1/fabric]  Fabric SDK version: 1.4.20; TLS: server
+2023.04.08-21:05:50.404 info  [caliper] [connectors/v1/fabric]  Org1's admin's materials are successfully loaded
+2023.04.08-21:05:50.404 info  [caliper] [connectors/v1/fabric]  Org2's admin's materials are successfully loaded
+2023.04.08-21:05:50.404 info  [caliper] [worker-message-handler]        Worker#4 initialized
+2023.04.08-21:05:50.478 info  [caliper] [worker-orchestrator]   5 workers ready, progressing to test preparation phase.
+2023.04.08-21:05:50.478 info  [caliper] [round-orchestrator]    Started round 1 (init)
+2023.04.08-21:05:50.484 info  [caliper] [worker-message-handler]        Preparing Worker#0 for Round#0
+2023.04.08-21:05:50.486 info  [caliper] [worker-message-handler]        Preparing Worker#1 for Round#0
+2023.04.08-21:05:50.494 info  [caliper] [worker-message-handler]        Preparing Worker#3 for Round#0
+2023.04.08-21:05:50.495 info  [caliper] [worker-message-handler]        Preparing Worker#4 for Round#0
+2023.04.08-21:05:50.843 info  [caliper] [worker-message-handler]        Initializing Worker#2...
+2023.04.08-21:05:50.843 info  [caliper] [fabric-connector]      Initializing standard connector compatible with installed SDK: 1.4.20
+2023.04.08-21:05:50.844 info  [caliper] [connectors/v1/fabric]  Fabric SDK version: 1.4.20; TLS: server
+2023.04.08-21:05:50.844 info  [caliper] [connectors/v1/fabric]  Org1's admin's materials are successfully loaded
+2023.04.08-21:05:50.844 info  [caliper] [connectors/v1/fabric]  Org2's admin's materials are successfully loaded
+2023.04.08-21:05:50.844 info  [caliper] [worker-message-handler]        Worker#2 initialized
+2023.04.08-21:05:50.845 info  [caliper] [worker-message-handler]        Preparing Worker#2 for Round#0
+2023.04.08-21:05:50.961 info  [caliper] [caliper-worker]        Info: worker 4 prepare test phase for round 0 is starting...
+2023.04.08-21:05:50.979 info  [caliper] [caliper-worker]        Info: worker 4 prepare test phase for round 0 is completed
+2023.04.08-21:05:50.980 info  [caliper] [worker-message-handler]        Worker#4 prepared for Round#0
+2023.04.08-21:05:51.022 info  [caliper] [caliper-worker]        Info: worker 2 prepare test phase for round 0 is starting...
+2023.04.08-21:05:51.030 info  [caliper] [caliper-worker]        Info: worker 2 prepare test phase for round 0 is completed
+2023.04.08-21:05:51.030 info  [caliper] [worker-message-handler]        Worker#2 prepared for Round#0
+2023.04.08-21:05:51.043 info  [caliper] [caliper-worker]        Info: worker 1 prepare test phase for round 0 is starting...
+2023.04.08-21:05:51.050 info  [caliper] [caliper-worker]        Info: worker 0 prepare test phase for round 0 is starting...
+2023.04.08-21:05:51.055 info  [caliper] [caliper-worker]        Info: worker 1 prepare test phase for round 0 is completed
+2023.04.08-21:05:51.056 info  [caliper] [worker-message-handler]        Worker#1 prepared for Round#0
+2023.04.08-21:05:51.056 info  [caliper] [caliper-worker]        Info: worker 3 prepare test phase for round 0 is starting...
+2023.04.08-21:05:51.057 info  [caliper] [caliper-worker]        Info: worker 0 prepare test phase for round 0 is completed
+2023.04.08-21:05:51.059 info  [caliper] [worker-message-handler]        Worker#0 prepared for Round#0
+2023.04.08-21:05:51.062 info  [caliper] [caliper-worker]        Info: worker 3 prepare test phase for round 0 is completed
+2023.04.08-21:05:51.062 info  [caliper] [worker-message-handler]        Worker#3 prepared for Round#0
+2023.04.08-21:05:51.064 info  [caliper] [worker-orchestrator]   5 workers prepared, progressing to test phase.
+2023.04.08-21:05:51.064 info  [caliper] [round-orchestrator]    Monitors successfully started
+2023.04.08-21:05:51.071 info  [caliper] [worker-message-handler]        Worker#2 is starting Round#0
+2023.04.08-21:05:51.073 info  [caliper] [worker-message-handler]        Worker#4 is starting Round#0
+2023.04.08-21:05:51.076 info  [caliper] [caliper-worker]        Worker #2 starting workload loop
+2023.04.08-21:05:51.081 info  [caliper] [caliper-worker]        Worker #4 starting workload loop
+2023.04.08-21:05:51.088 info  [caliper] [worker-message-handler]        Worker#3 is starting Round#0
+2023.04.08-21:05:51.093 info  [caliper] [worker-message-handler]        Worker#1 is starting Round#0
+2023.04.08-21:05:51.097 info  [caliper] [worker-message-handler]        Worker#0 is starting Round#0
+2023.04.08-21:05:51.107 info  [caliper] [caliper-worker]        Worker #3 starting workload loop
+2023.04.08-21:05:51.113 info  [caliper] [caliper-worker]        Worker #0 starting workload loop
+2023.04.08-21:05:51.116 info  [caliper] [caliper-worker]        Worker #1 starting workload loop
+2023.04.08-21:05:56.070 info  [caliper] [default-observer]      [init Round 0 Transaction Info] - Submitted: 103 Succ: 95 Fail:0 Unfinished:8
+2023.04.08-21:06:01.066 info  [caliper] [default-observer]      [init Round 0 Transaction Info] - Submitted: 229 Succ: 220 Fail:0 Unfinished:9
+2023.04.08-21:06:06.066 info  [caliper] [default-observer]      [init Round 0 Transaction Info] - Submitted: 355 Succ: 340 Fail:0 Unfinished:15
+2023.04.08-21:06:11.067 info  [caliper] [default-observer]      [init Round 0 Transaction Info] - Submitted: 480 Succ: 470 Fail:0 Unfinished:10
+2023.04.08-21:06:16.068 info  [caliper] [default-observer]      [init Round 0 Transaction Info] - Submitted: 605 Succ: 592 Fail:0 Unfinished:13
+2023.04.08-21:06:21.069 info  [caliper] [default-observer]      [init Round 0 Transaction Info] - Submitted: 730 Succ: 720 Fail:0 Unfinished:10
+2023.04.08-21:06:26.070 info  [caliper] [default-observer]      [init Round 0 Transaction Info] - Submitted: 855 Succ: 848 Fail:0 Unfinished:7
+2023.04.08-21:06:28.182 info  [caliper] [worker-message-handler]        Worker#4 finished Round#0
+2023.04.08-21:06:28.185 info  [caliper] [worker-message-handler]        Worker#2 finished Round#0
+2023.04.08-21:06:28.208 info  [caliper] [worker-message-handler]        Worker#3 finished Round#0
+2023.04.08-21:06:28.214 info  [caliper] [worker-message-handler]        Worker#1 finished Round#0
+2023.04.08-21:06:28.218 info  [caliper] [worker-message-handler]        Worker#0 finished Round#0
+2023.04.08-21:06:33.222 info  [caliper] [default-observer]      Resetting txCount indicator count
+2023.04.08-21:06:33.223 info  [caliper] [report-builder]        ### Test result ###
+2023.04.08-21:06:33.233 info  [caliper] [report-builder]
++------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+| Name | Succ | Fail | Send Rate (TPS) | Max Latency (s) | Min Latency (s) | Avg Latency (s) | Throughput (TPS) |
+|------|------|------|-----------------|-----------------|-----------------|-----------------|------------------|
+| init | 900  | 0    | 25.1            | 0.62            | 0.16            | 0.38            | 24.9             |
++------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+
+2023.04.08-21:06:33.234 info  [caliper] [round-orchestrator]    Finished round 1 (init) in 36.141 seconds
+2023.04.08-21:06:33.234 info  [caliper] [monitor.js]    Stopping all monitors
+2023.04.08-21:06:33.235 info  [caliper] [round-orchestrator]    Waiting 5 seconds for the next round...
+2023.04.08-21:06:38.238 info  [caliper] [round-orchestrator]    Started round 2 (query)
+2023.04.08-21:06:38.241 info  [caliper] [worker-message-handler]        Preparing Worker#0 for Round#1
+2023.04.08-21:06:38.242 info  [caliper] [worker-message-handler]        Preparing Worker#1 for Round#1
+2023.04.08-21:06:38.251 info  [caliper] [worker-message-handler]        Preparing Worker#2 for Round#1
+2023.04.08-21:06:38.252 info  [caliper] [worker-message-handler]        Preparing Worker#3 for Round#1
+2023.04.08-21:06:38.267 info  [caliper] [worker-message-handler]        Preparing Worker#4 for Round#1
+2023.04.08-21:06:38.336 info  [caliper] [caliper-worker]        Info: worker 0 prepare test phase for round 1 is starting...
+2023.04.08-21:06:38.339 info  [caliper] [caliper-worker]        Info: worker 0 prepare test phase for round 1 is completed
+2023.04.08-21:06:38.350 info  [caliper] [worker-message-handler]        Worker#0 prepared for Round#1
+2023.04.08-21:06:38.356 info  [caliper] [caliper-worker]        Info: worker 2 prepare test phase for round 1 is starting...
+2023.04.08-21:06:38.359 info  [caliper] [caliper-worker]        Info: worker 2 prepare test phase for round 1 is completed
+2023.04.08-21:06:38.360 info  [caliper] [worker-message-handler]        Worker#2 prepared for Round#1
+2023.04.08-21:06:38.362 info  [caliper] [caliper-worker]        Info: worker 4 prepare test phase for round 1 is starting...
+2023.04.08-21:06:38.367 info  [caliper] [caliper-worker]        Info: worker 1 prepare test phase for round 1 is starting...
+2023.04.08-21:06:38.367 info  [caliper] [caliper-worker]        Info: worker 4 prepare test phase for round 1 is completed
+2023.04.08-21:06:38.368 info  [caliper] [worker-message-handler]        Worker#4 prepared for Round#1
+2023.04.08-21:06:38.367 info  [caliper] [caliper-worker]        Info: worker 3 prepare test phase for round 1 is starting...
+2023.04.08-21:06:38.374 info  [caliper] [caliper-worker]        Info: worker 1 prepare test phase for round 1 is completed
+2023.04.08-21:06:38.375 info  [caliper] [worker-message-handler]        Worker#1 prepared for Round#1
+2023.04.08-21:06:38.375 info  [caliper] [caliper-worker]        Info: worker 3 prepare test phase for round 1 is completed
+2023.04.08-21:06:38.375 info  [caliper] [worker-message-handler]        Worker#3 prepared for Round#1
+2023.04.08-21:06:38.377 info  [caliper] [worker-orchestrator]   5 workers prepared, progressing to test phase.
+2023.04.08-21:06:38.378 info  [caliper] [round-orchestrator]    Monitors successfully started
+2023.04.08-21:06:38.379 info  [caliper] [worker-message-handler]        Worker#0 is starting Round#1
+2023.04.08-21:06:38.381 info  [caliper] [caliper-worker]        Worker #0 starting workload loop
+2023.04.08-21:06:38.385 info  [caliper] [worker-message-handler]        Worker#1 is starting Round#1
+2023.04.08-21:06:38.386 info  [caliper] [worker-message-handler]        Worker#2 is starting Round#1
+2023.04.08-21:06:38.387 info  [caliper] [caliper-worker]        Worker #2 starting workload loop
+2023.04.08-21:06:38.392 info  [caliper] [worker-message-handler]        Worker#4 is starting Round#1
+2023.04.08-21:06:38.393 info  [caliper] [caliper-worker]        Worker #4 starting workload loop
+2023.04.08-21:06:38.398 info  [caliper] [worker-message-handler]        Worker#3 is starting Round#1
+2023.04.08-21:06:38.407 info  [caliper] [caliper-worker]        Worker #1 starting workload loop
+2023.04.08-21:06:38.408 info  [caliper] [caliper-worker]        Worker #3 starting workload loop
+2023.04.08-21:06:43.378 info  [caliper] [default-observer]      [query Round 1 Transaction Info] - Submitted: 25 Succ: 25 Fail:0 Unfinished:0
+2023.04.08-21:06:48.379 info  [caliper] [default-observer]      [query Round 1 Transaction Info] - Submitted: 60 Succ: 55 Fail:0 Unfinished:5
+2023.04.08-21:06:53.379 info  [caliper] [default-observer]      [query Round 1 Transaction Info] - Submitted: 90 Succ: 85 Fail:0 Unfinished:5
+2023.04.08-21:06:55.089 info  [caliper] [worker-message-handler]        Worker#0 finished Round#1
+2023.04.08-21:06:55.196 info  [caliper] [worker-message-handler]        Worker#2 finished Round#1
+2023.04.08-21:06:55.202 info  [caliper] [worker-message-handler]        Worker#4 finished Round#1
+2023.04.08-21:06:55.213 info  [caliper] [worker-message-handler]        Worker#1 finished Round#1
+2023.04.08-21:06:55.219 info  [caliper] [worker-message-handler]        Worker#3 finished Round#1
+2023.04.08-21:07:00.221 info  [caliper] [default-observer]      Resetting txCount indicator count
+2023.04.08-21:07:00.222 info  [caliper] [report-builder]        ### Test result ###
+2023.04.08-21:07:00.223 info  [caliper] [report-builder]
++-------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+| Name  | Succ | Fail | Send Rate (TPS) | Max Latency (s) | Min Latency (s) | Avg Latency (s) | Throughput (TPS) |
+|-------|------|------|-----------------|-----------------|-----------------|-----------------|------------------|
+| query | 100  | 0    | 6.6             | 0.64            | 0.47            | 0.57            | 6.4              |
++-------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+
+2023.04.08-21:07:00.224 info  [caliper] [round-orchestrator]    Finished round 2 (query) in 15.836 seconds
+2023.04.08-21:07:00.224 info  [caliper] [monitor.js]    Stopping all monitors
+2023.04.08-21:07:00.224 info  [caliper] [report-builder]        ### All test results ###
+2023.04.08-21:07:00.225 info  [caliper] [report-builder]
++-------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+| Name  | Succ | Fail | Send Rate (TPS) | Max Latency (s) | Min Latency (s) | Avg Latency (s) | Throughput (TPS) |
+|-------|------|------|-----------------|-----------------|-----------------|-----------------|------------------|
+| init  | 900  | 0    | 25.1            | 0.62            | 0.16            | 0.38            | 24.9             |
+|-------|------|------|-----------------|-----------------|-----------------|-----------------|------------------|
+| query | 100  | 0    | 6.6             | 0.64            | 0.47            | 0.57            | 6.4              |
++-------+------+------+-----------------+-----------------+-----------------+-----------------+------------------+
+
+2023.04.08-21:07:00.238 info  [caliper] [report-builder]        Generated report with path /home/ubuntu/caliper-benchmarks/report.html
+2023.04.08-21:07:00.238 info  [caliper] [monitor.js]    Stopping all monitors
+2023.04.08-21:07:00.239 info  [caliper] [worker-orchestrator]   Sending exit message to connected workers
+2023.04.08-21:07:00.244 info  [caliper] [worker-message-handler]        Worker#1 is exiting
+2023.04.08-21:07:00.246 info  [caliper] [worker-message-handler]        Worker#2 is exiting
+2023.04.08-21:07:00.256 info  [caliper] [worker-message-handler]        Worker#0 is exiting
+2023.04.08-21:07:00.260 info  [caliper] [worker-message-handler]        Worker#3 is exiting
+2023.04.08-21:07:00.261 info  [caliper] [worker-message-handler]        Worker#4 is exiting
+2023.04.08-21:07:00.261 info  [caliper] [round-orchestrator]    Benchmark finished in 69.783 seconds. Total rounds: 2. Successful rounds: 2. Failed rounds: 0.
+2023.04.08-21:07:00.262 info  [caliper] [caliper-utils]         Executing command: cd .; docker-compose -f networks/fabric/docker-compose/2org1peercouchdb_solo_raft/docker-compose-tls.yaml down;(test -z \"$(docker ps -aq)\") || docker rm $(docker ps -aq);(test -z \"$(docker images dev* -q)\") || docker rmi $(docker images dev* -q);rm -rf /tmp/hfc-*
+/snap/docker/2746/lib/python3.6/site-packages/paramiko/transport.py:32: CryptographyDeprecationWarning: Python 3.6 is no longer supported by the Python core team. Therefore, support for it is deprecated in cryptography. The next release of cryptography (40.0) will be the last to support Python 3.6.
+  from cryptography.hazmat.backends import default_backend
+The FABRIC_CA_VERSION variable is not set. Defaulting to a blank string.
+The FABRIC_VERSION variable is not set. Defaulting to a blank string.
+Stopping peer0.org2.example.com         ...
+Stopping peer0.org1.example.com         ...
+Stopping orderer0.example.com           ...
+Stopping couchdb.peer0.org2.example.com ...
+Stopping ca.org1.example.com            ...
+Stopping ca.org2.example.com            ...
+Stopping couchdb.peer0.org1.example.com ...
+Stopping peer0.org2.example.com         ... done
+Stopping peer0.org1.example.com         ... done
+Stopping orderer0.example.com           ... done
+Stopping couchdb.peer0.org1.example.com ... done
+Stopping couchdb.peer0.org2.example.com ... done
+Stopping ca.org1.example.com            ... done
+Stopping ca.org2.example.com            ... done
+Removing peer0.org2.example.com         ...
+Removing peer0.org1.example.com         ...
+Removing orderer0.example.com           ...
+Removing couchdb.peer0.org2.example.com ...
+Removing ca.org1.example.com            ...
+Removing ca.org2.example.com            ...
+Removing couchdb.peer0.org1.example.com ...
+Removing couchdb.peer0.org1.example.com ... done
+Removing couchdb.peer0.org2.example.com ... done
+Removing peer0.org1.example.com         ... done
+Removing ca.org1.example.com            ... done
+Removing ca.org2.example.com            ... done
+Removing peer0.org2.example.com         ... done
+Removing orderer0.example.com           ... done
+Removing network 2org1peercouchdb_solo_raft_default
+/bin/sh: 1: test: "c561f24d4441: unexpected operator
+c561f24d4441
+2fa36532f0ba
+0fcc59e27275
+aaf5584a9ba4
+c1f093c9c6bb
+4e02c0dcd463
+2db1e92c266c
+2f0100859120
+/bin/sh: 1: test: "4c061e022f31: unexpected operator
+Untagged: dev-peer0.org1.example.com-smallbank-v0-b1f07dc4b6d8079c04183f3e9c828770349d6c0fd5ce55d82a7782925b2ce03a:latest
+Deleted: sha256:b459055fc392d37b123570fc293a9a2027bfe589df33ef3b9e3369f52771903a
+Deleted: sha256:466e32f2cf2ea719bd6f685351423b30d71d541413460833d2844af74dad3723
+Deleted: sha256:8ebd0011f76acaf442f3f6f182d672679be995efde15bcb2c9b5c2cd7e6c1fa3
+Deleted: sha256:58f88fe7b66b82c0f7753755491777b98a474fc4a5e65c56ce5bc6cd59b426fe
+Untagged: dev-peer0.org2.example.com-smallbank-v0-f8b95020f1a3b8371f7c58e1af1ff3d9fe0d4b26389373fa678955579a772c8f:latest
+Deleted: sha256:4c061e022f31f97d551d26eea3fae39170f0d34610e10b6357f28b07f4239c8f
+Deleted: sha256:a98d2ed18c188e53469e28d960cd9fd01df020c0db59d058d21e5548b5ccfe7a
+Deleted: sha256:025171b4d4ca5cec072f2cd2ba7128254b1ae045bcf6c7842bd49c11ccebec89
+Deleted: sha256:243d9ee880d1438d641208b3455f8f3cd2e22264630ef017417b13f6682babde
+Untagged: dev-peer0.org2.example.com-simple-v0-7ebccf7a7fd05d8ac0a55ea61f1f0397ca89de629cef5f537c0950ecf302d423:latest
+Deleted: sha256:fd0218286c3d5c7035e8e4fd4c6aa56f35d75477faf047cd23aac6ac13abfa32
+Deleted: sha256:a8d6ad7808b064e0bf0f0b03f1e3714ff139185595711e98a52056b2e4c8177a
+Deleted: sha256:abf381ede14536999f31550718b17c769f7c4bfc46886627fa19f708e5ae3968
+Deleted: sha256:6bfb031da23892ee8156af6483ab0be38b37216bef774d532fc59a947b9c9c23
+Untagged: dev-peer0.org1.example.com-simple-v0-b845a7f88df0bd3a47a573b80bd5cfab0986278f024e8667a3c90fb0eb1f4d6d:latest
+Deleted: sha256:9d87307f85c581f013ed1046a1c0f6c14916aa598d944b8104d3a5a330e1446d
+Deleted: sha256:e42b466855b24c9f783525b0837fce7526317172d0175253c4e4ec105b6325dd
+Deleted: sha256:7b758e2f16d9601acde9c97e441ea9369465f8f364662da7aef57f90dc1ad61b
+Deleted: sha256:908701faef774eb9c7f00f09c80617e30b59b7f55e932394b640b5b7cb3b9003
+Untagged: dev-peer0.org2.example.com-drm-v0-c25cb5f64ec9f30764df0f6b930f1f3bc7b96f88da333c49c4c6779ac65a4552:latest
+Deleted: sha256:c945c2a6c6b6baa8e4e4aaa3fb23ef0c6d6746d23717f7d5516aac5702ab8a98
+Deleted: sha256:1d1d8956e340d112f6cb96bfa6dfad058726ae104eab71d5a8ab26012de689f7
+Deleted: sha256:3844dd28e52adc06b7e95dca206c65ec5aac2b89c347e26ed1e2834b4aed266e
+Untagged: dev-peer0.org1.example.com-drm-v0-08a16fdaf3af53efb6b99e3c2ec4de9aa78e4d592b4582fc4aa4709c1f3b13cb:latest
+Deleted: sha256:18f6e77881791152b1193c128f326c4d192d7df0ef6b356dcd88082e4f82ceda
+Deleted: sha256:c009fa82f6d99e7de1ac83bcc80a9863de7921a14a19a26ee5562fb4f0aa1712
+Deleted: sha256:fe7b63df5441347aafb9b1684f01144113633748b65c7ed93f20c43987b0e58c
+Deleted: sha256:b1b6c65da228e81100f090a69fe47f493905be385b8b1405ba87bd9d3e29db8e
+Untagged: dev-peer0.org2.example.com-marbles-v0-82ec74ea3ac84a8926b1d7d3d256a2e2f41b74928c28cf4bcdbb5a7774a90f87:latest
+Deleted: sha256:3d048db62e3b1a8866fd30b4c3955a009a5a79a691b5c2252e082b773f1038ac
+Deleted: sha256:6ed0757bd1fd4a198ed8a7edb4a58fcc01ccf926a3fa79b7e4e1e8abde27a1be
+Deleted: sha256:2e294cea796764eb5d130770b609292070cc3e55befb463afea4011d5c18aad0
+Deleted: sha256:9e05be07676864c014bc5839036f8613f92704a2b979011f075f244f3a75976e
+Untagged: dev-peer0.org1.example.com-marbles-v0-d970bb5377683adf108a269e3670f7f9cbb849f3eff58fe19595ea3374a52ea0:latest
+Deleted: sha256:ec1817acb39817060712edbb042f22127bd7ac6b41bc74fac9806404b574d3c3
+Deleted: sha256:93be21c7c800859c3273cbc94e34a6b1dd07ee64bc4dd32e9cb0de68ade70d41
+Deleted: sha256:13e50c2721f45f17214fbdbd944f05903691fcb8c4da7a15ed9aef7843f222be
+Deleted: sha256:431ab2706efec31127aa29d1226dcb4b9bc2872e816791890e95bcf84930c04e
+2023.04.08-21:07:14.034 info  [caliper] [caliper-engine]        Executed end command in 13.772 seconds
+2023.04.08-21:07:14.035 info  [caliper] [cli-launch-manager]    Benchmark successfully finished
