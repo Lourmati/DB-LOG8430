@@ -1,0 +1,41 @@
+java -cp /home/ubuntu/ycsb-0.17.0/mongodb-binding/conf:/home/ubuntu/ycsb-0.17.0/conf:/home/ubuntu/ycsb-0.17.0/lib/HdrHistogram-2.1.4.jar:/home/ubuntu/ycsb-0.17.0/lib/htrace-core4-4.1.0-incubating.jar:/home/ubuntu/ycsb-0.17.0/lib/jackson-mapper-asl-1.9.4.jar:/home/ubuntu/ycsb-0.17.0/lib/jackson-core-asl-1.9.4.jar:/home/ubuntu/ycsb-0.17.0/lib/core-0.17.0.jar:/home/ubuntu/ycsb-0.17.0/mongodb-binding/lib/mongodb-async-driver-2.0.1.jar:/home/ubuntu/ycsb-0.17.0/mongodb-binding/lib/mongo-java-driver-3.8.0.jar:/home/ubuntu/ycsb-0.17.0/mongodb-binding/lib/slf4j-api-1.7.25.jar:/home/ubuntu/ycsb-0.17.0/mongodb-binding/lib/snappy-java-1.1.7.1.jar:/home/ubuntu/ycsb-0.17.0/mongodb-binding/lib/mongodb-binding-0.17.0.jar:/home/ubuntu/ycsb-0.17.0/mongodb-binding/lib/logback-classic-1.1.2.jar:/home/ubuntu/ycsb-0.17.0/mongodb-binding/lib/logback-core-1.1.2.jar site.ycsb.Client -db site.ycsb.db.MongoDbClient -s -P workloads/workloadb -p recordcount=1000 -p mongodb.upsert=true -p mongodb.url=mongodb://primary:27017,secondary1:27017,secondary2:27017,secondary3:27017/?replicaSet=myReplicaSet -t
+Command line: -db site.ycsb.db.MongoDbClient -s -P workloads/workloadb -p recordcount=1000 -p mongodb.upsert=true -p mongodb.url=mongodb://primary:27017,secondary1:27017,secondary2:27017,secondary3:27017/?replicaSet=myReplicaSet -t
+YCSB Client 0.17.0
+
+Loading workload...
+Starting test.
+2023-04-09 19:52:47:085 0 sec: 0 operations; est completion in 0 second
+mongo client connection created with mongodb://primary:27017,secondary1:27017,secondary2:27017,secondary3:27017/?replicaSet=myReplicaSet
+DBWrapper: report latency for each error is false and specific error codes to track for latency are: []
+2023-04-09 19:52:53:386 6 sec: 1000 operations; 156.45 current ops/sec; [READ: Count=95, Max=12559, Min=476, Avg=1371.2, 90=1975, 99=7071, 99.9=12559, 99.99=12559] [CLEANUP: Count=1, Max=3505, Min=3504, Avg=3505, 90=3505, 99=3505, 99.9=3505, 99.99=3505] [UPDATE: Count=905, Max=99711, Min=3462, Avg=6117.07, 90=8171, 99=14071, 99.9=23359, 99.99=99711]
+[OVERALL], RunTime(ms), 6393
+[OVERALL], Throughput(ops/sec), 156.42108556233381
+[TOTAL_GCS_G1_Young_Generation], Count, 4
+[TOTAL_GC_TIME_G1_Young_Generation], Time(ms), 35
+[TOTAL_GC_TIME_%_G1_Young_Generation], Time(%), 0.5474737994681683
+[TOTAL_GCS_G1_Old_Generation], Count, 0
+[TOTAL_GC_TIME_G1_Old_Generation], Time(ms), 0
+[TOTAL_GC_TIME_%_G1_Old_Generation], Time(%), 0.0
+[TOTAL_GCs], Count, 4
+[TOTAL_GC_TIME], Time(ms), 35
+[TOTAL_GC_TIME_%], Time(%), 0.5474737994681683
+[READ], Operations, 95
+[READ], AverageLatency(us), 1371.2
+[READ], MinLatency(us), 476
+[READ], MaxLatency(us), 12559
+[READ], 95thPercentileLatency(us), 2645
+[READ], 99thPercentileLatency(us), 7071
+[READ], Return=OK, 95
+[CLEANUP], Operations, 1
+[CLEANUP], AverageLatency(us), 3505.0
+[CLEANUP], MinLatency(us), 3504
+[CLEANUP], MaxLatency(us), 3505
+[CLEANUP], 95thPercentileLatency(us), 3505
+[CLEANUP], 99thPercentileLatency(us), 3505
+[UPDATE], Operations, 905
+[UPDATE], AverageLatency(us), 6117.072928176795
+[UPDATE], MinLatency(us), 3462
+[UPDATE], MaxLatency(us), 99711
+[UPDATE], 95thPercentileLatency(us), 10079
+[UPDATE], 99thPercentileLatency(us), 14071
+[UPDATE], Return=OK, 905
