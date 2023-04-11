@@ -1,58 +1,102 @@
-## Commandes à exécuter (environnement Hyperledger):
-1. Installation des dépendances et des librairies.  
+## Commandes à exécuter (environnement MongoDB & YCSB):
+1. Installation de Python.
 ```shell
-sudo apt-get update
-sudo apt install nodejs
 sudo apt-get install build-essential
-sudo apt install npm
-```
-2. Installation de Python (utilisez la version 2.7).
-```shell
 wget https://www.python.org/ftp/python/2.7.18/Python-2.7.18.tgz
 tar -xvf Python-2.7.18.tgz
-cd Python-2.7.18/
 ./configure
 make
 sudo make install
+which python2.7
 sudo ln -sf /usr/local/bin/python2.7 /usr/bin/python
 python --version
 ```
-3. Clonage et installation du projet Hyperledger Caliper (outil de benchmark).
+
+2. Installation des dépendances.
 ```shell
-git clone https://github.com/hyperledger/caliper-benchmarks.git
-cd caliper-benchmarks/
-git checkout d02cc8bbc17afda13a0d3af1122d43bfbfc45b0a
-npm init -y
-npm install --only=prod @hyperledger/caliper-cli@0.4
-cd networks/fabric/config_solo_raft/
-./generate.sh
-``` 
-4. Utilisation de Docker pour obtenir la base de données Hyperledger Fabric.
-```shell
-cd
-cd caliper-benchmarks/
-sudo snap install docker
-sudo docker pull hyperledger/fabric-ccenv:1.4.4
-sudo docker tag hyperledger/fabric-ccenv:1.4.4 hyperledger/fabric-ccenv:latest
-npm install --save fabric-client fabric-ca-client
-curl https://raw.githubusercontent.com/creationix/nvm/v0.25.0/install.sh | bash
-source ~/.profile
-nvm install 12
-```
-5. Modification des paramètres txNumber, tps et txDuration du fichier config.yaml afin de tester les combinaisons de charge de travail. Un exemple config.yaml (paramètres ajustés) se trouve dans chaque dossier (Workload A, Workload B, Workload C). 
-```shell
-cd caliper-benchmarks/benchmarks/samples/fabric/marbles/config.yaml
-nano config.yaml
+sudo apt-get update
+sudo apt install default-jre
+sudo apt install default-jdk
+sudo apt install maven
+mvn -version
+sudo apt install apt-transport-https ca-certificates curl software-properties-common
 ```
 
-6. Exécution de la commande de test.
+3. Installation de Docker et ajouter au groups.
+```shell
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable"
+apt-cache policy docker-ce
+sudo apt install docker-ce
+sudo usermod -aG docker ${USER}
+su - ${USER}
+```
+- Si mot de passe oublié.
+```shell
+sudo su -
+passwd ubuntu
+exit
+```
+
+4. Quitter et ouvrir un nouveau terminal pour vérifier si Docker est dans les groups.
+```shell
+groups
+```
+
+5. Installation de Docker Compose et de YCSB.
+```shell
+sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+curl -O --location https://github.com/brianfrankcooper/YCSB/releases/download/0.17.0/ycsb-0.17.0.tar.gz
+tar xfvz ycsb-0.17.0.tar.gz
+```
+
+6. Configurer le fichier YAML (copier docker-compose.yml du dossier GitHub)
+```shell
+cd ycsb-0.17.0/
+mkdir database
+nano docker-compose-mongodb.yml
+```
+
+7. Lier et initialiser les clusters.
+```shell
+docker exec -it primary mongosh --eval "rs.initiate({
+ _id: \"myReplicaSet\",
+ members: [
+   {_id: 0, host: \"primary\"},
+   {_id: 1, host: \"secondary1\"},
+   {_id: 2, host: \"secondary2\"},
+   {_id: 3, host: \"secondary3\"}
+ ]
+})"
+docker exec -it primary mongosh --eval "rs.status()"
+docker-compose -f docker-compose-mongodb.yml
+```
+
+8. Ouvrir un autre terminal et modifier etc/hosts.
+```shell
+nano etc/hosts
+```
+
+9. Ajouter au début de etc/hosts (après localhost) ce qui suit. Utilisez l'adresse IP de votre instance/machine.
+```shell
+34.230.30.142   primary
+32.230.30.143   secondary1
+34.230.30.144   secondary2
+34.230.30.145   secondary3
+```
+
+9. Exécuter les commandes pour tester Hyperledger Fabric.
 ```shell
 cd
-cd caliper-benchmarks/
-sudo npx caliper launch manager --caliper-workspace . --caliper-benchconfig benchmarks/samples/fabric/marbles/config.yaml --caliper-networkconfig networks/fabric/v1/v1.4.4/2org1peercouchdb_raft/fabric-go-tls-solo.yaml
+cd ycsb-0.17.0/
+./bin/ycsb load mongodb -s -P workloads/workloada -p recordcount=1000 -p mongodb.upsert=true -p mongodb.url=mongodb://primary:27017,secondary1:27017,secondary2:27017,secondary3:27017/?replicaSet=myReplicaSet > outputLoad.txt
+./bin/ycsb run mongodb -s -P workloads/workloada -p recordcount=1000 -p mongodb.upsert=true -p mongodb.url=mongodb://primary:27017,secondary1:27017,secondary2:27017,secondary3:27017/?replicaSet=myReplicaSet > outputRun.txt
 ```
+
 ## Remarques:
-- Utilisez la version 6.14.16 de npm, et 12.22.12 de node (commande ```nvm install 12```)
-- Exécutez ```./generate.sh``` dans le dossier config_solo_raft
-- En cas d'erreur gRPC : ```npm rebuild grpc --force```
-- En cas de problèmes de permission : ```sudo chmod 777 /var/run/docker.sock``` 
+- Remplacez ```workloada``` dans les commandes de test par ```workloadb``` ou ```workloadc``` pour tester les combinaisons de charge de travail.
+- ```workloada``` (50/50 lecture/écriture), ```workloadb``` (10/90 lecture/écriture), ```workloadc``` (100/0 lecture/écriture)
+- Si vous voulez modifier les combinaisons : simplement modifier les fichiers workloada, workloab, ... avec la commande ```nano``` dans /workloads
+
